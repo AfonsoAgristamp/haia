@@ -1,0 +1,18 @@
+.overlay {
+	display: inline-block;
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: $transition-base;
+	}
+
+	&-gradient-dark-to-transparent:after {
+		background: linear-gradient(90deg, #32382b 0%, rgba(#32382b, 0.0001) 50%);
+	}
+}

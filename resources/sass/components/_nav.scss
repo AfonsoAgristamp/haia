@@ -1,0 +1,11 @@
+.nav {
+  &-pills {
+    .nav-link {
+      background: $dark;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+section {
+	position: relative;
+}
+
+textarea {
+	resize: none;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+a {
+	outline: none !important;
+	transition: $transition-base;
+}
+
+.text-transform-none {
+	text-transform: none;
+}

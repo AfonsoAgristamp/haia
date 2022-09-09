@@ -1,0 +1,49 @@
+{
+    "private": true,
+    "scripts": {
+        "clean-npm-install": "rm -rf node_modules && rm package-lock.json && npm cache clean --force && npm i",
+        "dev": "npm run development",
+        "prod": "npm run production",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "accounting": "^0.4.1",
+        "browser-sync": "^2.27.5",
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "cross-env": "^7.0.3",
+        "imagemin-webpack-plugin": "^2.4.2",
+        "laravel-mix": "^6.0.29",
+        "laravel-mix-criticalcss": "^1.0.2",
+        "laravel-mix-purgecss": "^6.0.0",
+        "laravel-mix-webp": "^0.1.1",
+        "postcss": "^8.3.6",
+        "postcss-sprites": "^4.2.1",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.38.0",
+        "sass-loader": "^12.1.0",
+        "svg-spritemap-webpack-plugin": "^4.2.0"
+    },
+    "dependencies": {
+        "@fancyapps/fancybox": "^3.5.7",
+        "bootstrap": "^5.1.0",
+        "imask": "^6.0.7",
+        "infinite-scroll": "^4.0.1",
+        "jquery": "^3.6.0",
+        "jquery-maskmoney": "^3.0.2",
+        "jquery.maskedinput": "^1.4.1",
+        "lax.js": "^2.0.3",
+        "lodash": "^4.17.21",
+        "moment": "^2.18.1",
+        "popper.js": "^1.16.1",
+        "select2": "^4.0.13",
+        "share-api-polyfill": "^1.0.21",
+        "sweetalert2": "^9.7.2",
+        "swiper": "^7.0.1",
+        "tiny-slider": "^2.9.2",
+        "wow.js": "^1.2.2"
+    }
+}

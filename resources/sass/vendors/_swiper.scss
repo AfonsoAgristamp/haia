@@ -1,0 +1,68 @@
+:root {
+  --swiper-theme-color: #{$secondary};
+}
+
+.swiper {
+
+  &-button-prev,
+  &-button-next {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    right: auto;
+    left: auto;
+    margin-top: auto;
+    color: inherit;
+    width: auto;
+    height: auto;
+    transition: $transition-base;
+
+    &:hover,
+    &:focus {
+      color: $link-hover-color;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 2.5rem !important;
+      height: 2.5rem !important;
+    }
+  }
+
+  &-button-prev {
+    transform: scaleX(-1) translateY(-50%);;
+    left: 0;
+    right: auto;
+  }
+
+  &-button-next {
+    right: 0;
+  }
+
+  &-gallery-thumb {
+    .ic-arrow {
+      width: 1.25rem;
+      height: 1.875rem;
+    }
+
+    .swiper-slide {
+      cursor: pointer;
+    }
+  }
+
+  &-slide {
+    img {
+      aspect-ratio: auto;
+    }
+
+    &-thumb-active {
+      img {
+        border: 3px solid $dark;
+      }
+    }
+  }
+}

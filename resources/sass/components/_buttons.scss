@@ -1,0 +1,11 @@
+.btn {
+	text-transform: $btn-text-transform;
+
+	&-dark, &-light {
+		color: $primary;
+
+		&:hover, &:active, &:focus, &.disabled, &:disabled {
+			color: shade-color($primary, $link-shade-percentage);
+		}
+	}
+}

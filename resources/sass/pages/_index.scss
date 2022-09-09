@@ -1,0 +1,65 @@
+.index {
+
+  .banner {
+    padding-top: $block-spacer-small;
+    padding-bottom: $block-spacer-small;
+
+    @include media-breakpoint-up(sm) {
+      padding-top: $block-spacer-large;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-top: $block-spacer-large * 2;
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-top: $block-spacer-large * 3;
+    }
+  }
+
+  .plants {
+    .display-1 {
+      @include media-breakpoint-up(md) {
+        font-size: 7.2rem;
+      }
+      @include media-breakpoint-up(lg) {
+        font-size: 8rem;
+      }
+      @include media-breakpoint-up(xl) {
+        font-size: 12rem;
+      }
+    }
+  }
+
+  .leisures {
+    .ic-lg {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  .location {
+    &-title-body {
+      background: $primary;
+      @include media-breakpoint-up(md) {
+        background: rgba($primary,0);
+      }
+    }
+  }
+
+  .tour {
+
+    &-button-body {
+      @include media-breakpoint-up(md) {
+        position: relative;
+        top: 1.5rem;
+      }
+    }
+
+    iframe {
+      @include media-breakpoint-up(xl) {
+        height: 43.75rem;
+      }
+    }
+  }
+}
