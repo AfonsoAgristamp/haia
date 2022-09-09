@@ -239,7 +239,7 @@
       <div class="col-md-6">
         <div class="vstack h-md-50 overflow-hidden justify-content-end p-block-small px-lg-block-large bg-light position-relative">
           <h2 class="mb-2 pt-10 pe-xl-20 text-primary font-display h1 lh-1 text-transform-none">
-            +30 ambientes de lazer</h2>
+            +20 ambientes de lazer</h2>
           <p class="pe-4 pe-sm-14 pe-md-0 pe-xl-20 text-dark fs-4 ls-0h">
             distribuídos ao longo dos mais
             de <strong>7.000m²</strong> de área comum
