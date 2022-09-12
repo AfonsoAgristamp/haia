@@ -2,11 +2,12 @@
 
 namespace Agenciafmd\Frontend\Http\Livewire;
 
-use Agenciafmd\Anapro\Jobs\SendConversionsToAnapro;
-use Agenciafmd\Postal\Models\Postal;
-use Agenciafmd\Postal\Notifications\SendNotification;
-use Illuminate\Support\Facades\Cookie;
 use Livewire\Component;
+use Agenciafmd\Postal\Models\Postal;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cookie;
+use Agenciafmd\Anapro\Jobs\SendConversionsToAnapro;
+use Agenciafmd\Postal\Notifications\SendNotification;
 
 class Contact extends Component
 {
@@ -18,6 +19,8 @@ class Contact extends Component
 
     public $terms = null;
 
+    private string $uri = 'https://rve.cvcrm.com.br/api/cvio/lead';
+     
     public function render()
     {
         return view('agenciafmd/frontend::livewire.contact');
@@ -62,57 +65,13 @@ class Contact extends Component
     public function submit()
     {
         $data = $this->validate($this->rules(), [], $this->attributes());
-
-        Postal::where('slug', 'contato')
-            ->first()
-            ->notify(new SendNotification([
-                'greeting' => 'Contato',
-                'introLines' => [
-                    '**Nome:** ' . $data['name'],
-                    '**E-mail:** ' . $data['email'],
-                    '**Telefone:** ' . $data['phone'],
-                    '**Política de Privacidade:** ' . (($data['terms']) ? 'Sim' : 'Não'),
-                ],
-            ], [$data['email'] => $data['name']]));
-
-        $phone = preg_replace('/[^0-9]/', '', $data['phone']);
-        $description = '**Nome:** ' . $data['name'] .
-            ' **E-mail:** ' . $data['email'] .
-            ' **Celular:** ' . $data['phone'] .
-            ' **Termos de uso:** ' . ($data['terms'] ? 'Sim' : 'Não');
-
-        $data = [
-            'Midia' => Cookie::get('utm_source', ''),
-            'Peca' => Cookie::get('utm_medium', ''),
-            'UsuarioEmail' => '',
-            'GrupoPeca' => '',
-            'CampanhaPeca' => Cookie::get('utm_campaign', ''),
-            'PessoaNome' => $data['name'],
-            'ValidarEmail' => 'false',
-            'PessoaEmail' => $data['email'],
-            'ValidarTelefone' => 'false',
-            'PessoaTelefones' => [
-                [
-                    'Tipo' => 'OUTR',
-                    'DDD' => substr($phone, 0, 2),
-                    'Numero' => substr($phone, 2),
-                    'Ramal' => null,
-                ],
-            ],
-            'Observacoes' => $description,
+        $cvcrmJson = [
+            'nome' => $data['name'],
+            'email' => $data['email'],
+            'telefone' => $data['phone']
         ];
-
-        SendConversionsToAnapro::dispatch($data);
-        $this->emit('swal', [
-            'level' => 'success',
-            'message' => 'Mensagem enviada com sucesso.',
-        ]);
-
-        $this->emit('datalayer', [
-            'category' => 'Contato',
-            'form_name' => 'contato',
-        ]);
-
-        $this->reset();
-    }
+           Http::withHeaders([
+                'token' => 'f32201d5186eeecb8c2c8c326fa4280525c59e26',
+            ])->post($this->uri, $cvcrmJson);
+        }
 }
