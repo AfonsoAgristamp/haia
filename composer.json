@@ -19,12 +19,6 @@
     "require": {
         "php": "^8.0",
         "ext-json": "*",
-        "agenciafmd/admix": "dev-master",
-        "agenciafmd/admix-analytics": "dev-master",
-        "agenciafmd/frontend": "*",
-        "agenciafmd/laravel-anapro": "dev-master",
-        "agenciafmd/laravel-sitemap": "dev-master",
-        "agenciafmd/laravel-social-meta": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
